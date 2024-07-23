@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorMessagingComponent } from './error-messaging.component';
+import { StatusFormComponent } from './status-form.component';
 
-describe('ErrorMessagingComponent', () => {
-  let component: ErrorMessagingComponent;
-  let fixture: ComponentFixture<ErrorMessagingComponent>;
+describe('StatusFormComponent', () => {
+  let component: StatusFormComponent;
+  let fixture: ComponentFixture<StatusFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorMessagingComponent ]
+      declarations: [ StatusFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ErrorMessagingComponent);
+    fixture = TestBed.createComponent(StatusFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
