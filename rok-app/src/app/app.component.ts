@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { UrlConst } from './pages/constants/url-const';
 import { RoutingService } from './core/services/routing.service';
 
@@ -9,6 +9,7 @@ import { RoutingService } from './core/services/routing.service';
 })
 export class AppComponent {
   title = 'ROK Application';
+sidenav: any;
 
   constructor(private routingService: RoutingService){}
 

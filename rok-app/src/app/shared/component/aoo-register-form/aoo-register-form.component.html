@@ -1,0 +1,20 @@
+<p>aoo-register-form works!</p>
+<h2>ユーザ情報</h2>
+<div class="userName">
+    <mat-form-field class="example-full-width">
+        <mat-label>ユーザ名</mat-label>
+        <input matInput placeholder="Ex. betashort" [(ngModel)]="userRegistedData.userName">
+    </mat-form-field>
+</div>
+
+<div>
+    <mat-radio-group [(ngModel)]="userRegistedData.participationYesNo">
+        <mat-radio-button class="example-margin" value="true">参加</mat-radio-button>
+        <mat-radio-button class="example-margin" value="false">不参加</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div>
+    <button mat-flat-button (click)="submit()" *ngIf="userRegistedData.userName !=''">submit</button>
+</div>
+<p>ユーザ名：{{userRegistedData.userName}}</p>
+<p>参加可否{{userRegistedData.participationYesNo}}</p>

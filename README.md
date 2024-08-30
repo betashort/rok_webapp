@@ -38,6 +38,9 @@ ng g component shared/component/profile-form
 
 ng g component shared/component/result-form
 ng g component shared/component/status-form
+ng g component shared/component/aoo-register-form
+ng g component pages/component/aoo-register-form
+ng g component pages/component/aoo-admin-page
 ### serviceを作成する
 ```bash
 ng g service サービス名
@@ -67,3 +70,48 @@ ng serve --host 0.0.0.0
     |
   |-
   |-app.module
+
+
+CREATE TABLE USER(
+  UserID INT NOT NULL PRIMARY KEY,
+  UserName VARCHAR(100)
+);
+
+INSERT INTO USER (UserID, UserName)
+VALUES (65885910, 'betashort');
+
+CREATE TABLE KVK_202407_before(
+  UserID INT,
+  UserName VARCHAR(100),
+  UserPower INT,
+  UserKillPoint INT,
+  RegisterData VARCHAR(100)
+);
+
+INSERT INTO KVK_202407 (UserID, UserName, UserPower, UserKillPoint, RegisterData)
+VALUES(1, 'betashort', 86396053, 3165314782, '2024-07-01')
+
+
+  @HostListener("window:unload", ["$event"])
+  unloadHandler(event: any) {
+    let a: string = "ハンドラーunloadHandler";
+    console.log(a);
+  }
+
+  @HostListener("window:load", ["$event"])
+  loadHandler(event: any) {
+    let a: string = "ハンドラーloadHandler";
+    console.log(a);
+  }
+
+  @HostListener("window:beforeunload", ["$event"])
+  beforeUnloadHandler(event: any) {
+    let a: string = "ハンドラーbeforeUnloadHandler";
+    console.log(a);
+  }
+
+  @HostListener("document:visibilitychange", ["$event"])
+  visibilityChange(event: any) {
+    let a: string = "ハンドラーbeforeUnloadHandler";
+    console.log(a);
+  }

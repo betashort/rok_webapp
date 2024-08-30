@@ -1,0 +1,23 @@
+<form>
+    <mat-form-field>
+        <mat-label>ユーザ名</mat-label>
+        <input matInput placeholder="Ex. betashort">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let teleportArea of teleportAreas" [value]="teleportArea">{{teleportArea}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Address 2</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+</form>
+<button (click)="add()">追加</button>
+
+{{ userAooInfo.userName}}
+{{ userAooInfo.userTeleportArea}}
+{{ userAooInfo.userTeleportArea}}
+
+<p *ngFor="let userInfo of userAooInfos">{{userInfo.userName}}, {{userInfo.userTeleportArea}}, {{userInfo.userRole}}</p>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../../../shared/component/header/header.component';
 
 @Component({
   selector: 'app-dashboard-page',

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RoutingService } from 'src/app/core/services/routing.service';
+
 
 @Component({
   selector: 'app-header',
@@ -8,10 +8,31 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  //clicks sidenav and throw event
+  @Output() sidenavToggle = new EventEmitter();
+  //get menuList
+  
 
-  constructor() { }
+  constructor(
+    private routingService : RoutingService
+  ) { }
 
   ngOnInit(): void {
   }
+
+  /**
+   * Clicks toggle sidenav
+   */
+  clickSidenav(): void{
+    this.sidenavToggle.emit();
+  }
+
+  /**
+   * clicks sign out
+   */
+  clickSignOut(): void{
+
+  }
+  
 
 }

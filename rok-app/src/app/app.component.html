@@ -1,10 +1,20 @@
-<div class="body-wrapper">
-  <app-header></app-header>
-  <a routerLink="/result-register-form">こちら</a>
-  <div class="main">
+<!-- Sidenav container -->
+<mat-sidenav-container>
+  <!-- Side navigation -->
+  <mat-sidenav #sidenav mode="side" closed>
+
+    <app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
+
+  </mat-sidenav>
+
+  <!-- Main Contents -->
+  <mat-sidenav-content>
+    <!-- Header Contents -->
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+
+    <!-- Main Contents -->
     <router-outlet></router-outlet>
-  </div>
-  <div>
+    <!-- Footer Contents -->
     <app-footer></app-footer>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
