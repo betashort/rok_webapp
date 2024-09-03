@@ -17,5 +17,5 @@ export interface IPageUrlPair {
 export const PAGEURLS: IPageUrlPair[] = [
     {page: 'ダッシュボード', url:"dashboard-page"},
     {page: 'オシリス登録', url: 'aoo-register'},
-    {page: 'オシリスチームボード', url: 'aoo-teamboard-page'}
+    {page: 'オシリスチームボード', url: 'aoo-teamboard'}
 ]
