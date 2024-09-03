@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { IPageUrlPair, PAGEURLS } from '../../../pages/const/urls';
 import { RouterLink } from '@angular/router';
 
@@ -11,4 +11,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SidenavComponent {
   urls:IPageUrlPair[] = PAGEURLS;
+  @Output() sidenavClose = new EventEmitter();
+
+  clickSidenavClose(){
+    this.sidenavClose.emit();
+  }
 }

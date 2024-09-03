@@ -1,4 +1,8 @@
 <div class="header">
-    <mat-icon fontIcon="menu" (click)="clickSidenav()"></mat-icon>
+    @if (sidenavSwitch){
+    <mat-icon fontIcon="menu" (click)="clickSidenavToggle()"></mat-icon>
+    } @else {
+        <mat-icon fontIcon="close" (click)="clickSidenavToggle()"></mat-icon>
+    }
 <h2>ROK Dashboard</h2>
 </div>

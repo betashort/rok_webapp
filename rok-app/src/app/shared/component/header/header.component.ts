@@ -10,8 +10,10 @@ import { MatIconModule} from '@angular/material/icon';
 })
 export class HeaderComponent {
   @Output() sidenavToggle = new EventEmitter();
+  sidenavSwitch: boolean = true;
 
-  clickSidenav(): void{
+  clickSidenavToggle(): void{
     this.sidenavToggle.emit();
+    this.sidenavSwitch = !this.sidenavSwitch;
   }
 }
