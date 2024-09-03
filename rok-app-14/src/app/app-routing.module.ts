@@ -8,6 +8,7 @@ import { SpeedupCalculatorComponent } from './pages/component/speedup-calculator
 import { ResourceCalculatorComponent } from './pages/component/resource-calculator/resource-calculator.component';
 import { AooRegisterPageComponent } from './pages/component/aoo-register-page/aoo-register-page.component';
 import { AooAdminPageComponent } from './pages/component/aoo-admin-page/aoo-admin-page.component';
+
 const routes: Routes = [
   {path: '', redirectTo: UrlConst.SLASH + UrlConst.PATH_DASHBOARD, pathMatch: 'full'},
   {path: UrlConst.PATH_DASHBOARD, component:DashboardPageComponent},
