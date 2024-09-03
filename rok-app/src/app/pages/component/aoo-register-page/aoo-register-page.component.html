@@ -1,1 +1,22 @@
-<p>aoo-register-page works!</p>
+<p>aoo-register-form works!</p>
+<h2>ユーザ情報</h2>
+<form [formGroup]="userAooRegisterInfo">
+    <div class="userName">
+        <mat-form-field class="example-full-width">
+            <mat-label>ユーザ名</mat-label>
+            <input matInput formControlName="userName" placeholder="Ex. betashort">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-radio-group formControlName="userParticipation">
+            <mat-radio-button class="example-margin" value="true">参加</mat-radio-button>
+            <mat-radio-button class="example-margin" value="false">不参加</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div>
+        <button mat-flat-button>submit</button>
+    </div>
+</form>
+<p>ユーザ名</p>
+<p>参加可否</p>
