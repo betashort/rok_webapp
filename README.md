@@ -26,7 +26,9 @@ ng new プロジェクト名
 ```
 ### moduleを作成する
 ```bash 
-ng g モジュール名 --module app.module
+ng g module app.module
+
+ng g module pages/pages
 ```
 
 ### componentを作成する
@@ -35,12 +37,18 @@ ng g component コンポーネント名
 ```
 
 ng g component shared/component/profile-form
-
 ng g component shared/component/result-form
 ng g component shared/component/status-form
 ng g component shared/component/aoo-register-form
-ng g component pages/component/aoo-register-form
-ng g component pages/component/aoo-admin-page
+
+
+ng g component shared/component/header
+ng g component shared/component/footer
+
+
+ng g component pages/component/aoo-register-page
+ng g component pages/component/aoo-teamboard-page
+
 ### serviceを作成する
 ```bash
 ng g service サービス名

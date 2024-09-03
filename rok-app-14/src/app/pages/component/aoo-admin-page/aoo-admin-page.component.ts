@@ -53,7 +53,7 @@ export class AooAdminPageComponent implements OnInit {
   todo: string[] = [];
   doing: string[] = []
   done: string[] = [];
-  
+
 
 
   constructor(private router: Router) {
@@ -88,6 +88,24 @@ export class AooAdminPageComponent implements OnInit {
         break;
       case '南':
         this.done.push(this.selectedUserAooInfo.value.userName);
+        break;
+      default:
+        break;
+    }
+  }
+  clearListItem(clearItem: string, area: string): void {
+    switch (area) {
+      case 'north':
+        let tmpTodo: string[] = this.todo;
+        this.todo = tmpTodo.filter((item) => item !== clearItem);
+        break;
+      case 'arc':
+        let tmpDoing: string[] = this.todo;
+        this.doing = tmpDoing.filter((item) => item !== clearItem);
+        break;
+      case 'south':
+        let tmpDone: string[] = this.todo;
+        this.done = tmpDone.filter((item) => item !== clearItem);
         break;
       default:
         break;

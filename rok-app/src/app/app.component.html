@@ -1,20 +1,3 @@
-<!-- Sidenav container -->
-<mat-sidenav-container>
-  <!-- Side navigation -->
-  <mat-sidenav #sidenav mode="side" closed>
-
-    <app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
-
-  </mat-sidenav>
-
-  <!-- Main Contents -->
-  <mat-sidenav-content>
-    <!-- Header Contents -->
-    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-
-    <!-- Main Contents -->
-    <router-outlet></router-outlet>
-    <!-- Footer Contents -->
-    <app-footer></app-footer>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

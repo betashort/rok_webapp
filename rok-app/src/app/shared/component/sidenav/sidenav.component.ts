@@ -1,24 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { UrlConst,PAGEURLS, PageUrlPair } from 'src/app/pages/constants/url-const';
-import { RouterModule, Routes } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
+  standalone: true,
+  imports: [],
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrl: './sidenav.component.scss'
 })
-export class SidenavComponent implements OnInit {
-  @Output() sidenavClose = new EventEmitter();
-  menuList:PageUrlPair[] = PAGEURLS;
-  constructor() { }
+export class SidenavComponent {
 
-  ngOnInit(): void {
-  }
-
-  /**
-  * Clicks home
-  */
-  public clickHome(): void {
-    this.sidenavClose.emit();
-  }
 }

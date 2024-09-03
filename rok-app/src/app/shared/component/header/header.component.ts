@@ -1,38 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RoutingService } from 'src/app/core/services/routing.service';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
-  //clicks sidenav and throw event
-  @Output() sidenavToggle = new EventEmitter();
-  //get menuList
-  
-
-  constructor(
-    private routingService : RoutingService
-  ) { }
-
-  ngOnInit(): void {
-  }
-
-  /**
-   * Clicks toggle sidenav
-   */
-  clickSidenav(): void{
-    this.sidenavToggle.emit();
-  }
-
-  /**
-   * clicks sign out
-   */
-  clickSignOut(): void{
-
-  }
-  
+export class HeaderComponent {
 
 }

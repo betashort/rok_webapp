@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   DragDropModule
 } from '@angular/cdk/drag-drop'
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    MatIconModule
   ]
 })
 export class PagesModule { }
