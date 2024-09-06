@@ -12,6 +12,7 @@ import {
 import { MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-aoo-teamboard-page',
@@ -20,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatInputModule,
     CdkDropListGroup, CdkDropList, CdkDrag],
   templateUrl: './aoo-teamboard-page.component.html',
   styleUrl: './aoo-teamboard-page.component.scss'
@@ -172,6 +174,6 @@ export class AooTeamboardPageComponent {
     this.getSessionItemsTeleportArea();
   }
 
-  entries = window.performance.getEntriesByType("navigation");
+  //entries = window.performance.getEntriesByType("navigation");
 
 }
