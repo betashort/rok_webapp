@@ -1,1 +1,65 @@
-<p>aoo-teamboard-page works!</p>
+<div>
+    <form [formGroup]="selectedUserAooInfo">
+        <mat-form-field>
+            <mat-label>ユーザ名</mat-label>
+            <input matInput formControlName="userName" placeholder="Ex. betashort" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>チーム</mat-label>
+            <mat-select formControlName="userRole" required>
+                @for (role of roles; track role) {
+                <mat-option [value]="role">{{role}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>移転場所</mat-label>
+            <mat-select formControlName="userTeleportArea" required>
+                @for (teleportArea of teleportAreas; track teleportArea) {
+                <mat-option [value]="teleportArea">{{teleportArea}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>役割詳細</mat-label>
+            <textarea matInput formControlName="userRoleDetail" required></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<button mat-button (click)="add()">追加</button>
+
+<div cdkDropListGroup>
+    <div class="example-container">
+        <h2>北</h2>
+
+        <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
+            @for (item of todo; track item) {
+            <div class="example-box" cdkDrag >
+                <div >{{item}}</div><button (click)="clearListItem(item, 'north')"><mat-icon>clear</mat-icon></button>
+            </div>
+        }
+        </div>
+    </div>
+    <div class="example-container">
+        <h2>棺</h2>
+
+        <div cdkDropList [cdkDropListData]="doing" class="example-list" (cdkDropListDropped)="drop($event)">
+            @for (item of doing; track item) {
+            <div class="example-box" cdkDrag >
+                <div>{{item}}</div><button (click)="clearListItem(item, 'arc')"><mat-icon>clear</mat-icon></button>
+            </div>
+        }
+        </div>
+    </div>
+    <div class="example-container">
+        <h2>南</h2>
+
+        <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+            @for (item of done; track item) {
+            <div class="example-box" cdkDragq>
+                <div >{{item}}</div><button (click)="clearListItem(item, 'south')"><mat-icon>clear</mat-icon></button>
+            </div>
+        }
+        </div>
+    </div>
+</div>
