@@ -39,11 +39,11 @@
 
     <div
       cdkDropList
-      [cdkDropListData]="todo"
+      [cdkDropListData]="north"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of todo; track item) {
+      @for (item of north; track item) {
       <div class="example-box" cdkDrag>
         <div>{{ item }}</div>
         <button (click)="clearListItem(item, 'north')">
@@ -58,11 +58,11 @@
 
     <div
       cdkDropList
-      [cdkDropListData]="doing"
+      [cdkDropListData]="arc"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of doing; track item) {
+      @for (item of arc; track item) {
       <div class="example-box" cdkDrag>
         <div>{{ item }}</div>
         <button (click)="clearListItem(item, 'arc')">
@@ -77,11 +77,11 @@
 
     <div
       cdkDropList
-      [cdkDropListData]="done"
+      [cdkDropListData]="south"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of done; track item) {
+      @for (item of south; track item) {
       <div class="example-box" cdkDragq>
         <div>{{ item }}</div>
         <button (click)="clearListItem(item, 'south')">
