@@ -1,8 +1,22 @@
-<div class="header">
-    @if (sidenavSwitch){
-    <mat-icon fontIcon="menu" (click)="clickSidenavToggle()"></mat-icon>
-    } @else {
+<div class="wrap-header">
+    <div class="wrap-sidenav-button">
+        @if (sidenavSwitch){
+        <mat-icon fontIcon="menu" (click)="clickSidenavToggle()"></mat-icon>
+        } @else {
         <mat-icon fontIcon="close" (click)="clickSidenavToggle()"></mat-icon>
-    }
-<h2>ROK Dashboard</h2>
+        }
+    </div>
+    <div class="wrap-logo">
+        <h2>ROK Dashboard</h2>
+    </div>
+    <nav class="wrap-nav-bar">
+        <ul>
+            @if ( loginState ){
+            <li><mat-icon fontIcon="login"></mat-icon></li>
+            }@else{
+            <li><mat-icon fontIcon="logout"></mat-icon></li>
+            }
+
+        </ul>
+    </nav>
 </div>

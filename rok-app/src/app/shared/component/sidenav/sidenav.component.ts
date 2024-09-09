@@ -11,9 +11,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SidenavComponent {
   urls:IPageUrlPair[] = PAGEURLS;
-  @Output() sidenavClose = new EventEmitter();
+  // @Output() sidenavClose = new EventEmitter();
 
-  clickSidenavClose(){
-    this.sidenavClose.emit();
-  }
+  // clickSidenavClose(){
+  //   this.sidenavClose.emit();
+  // }
 }

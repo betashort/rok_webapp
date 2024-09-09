@@ -1,6 +1,5 @@
 <div>
     <ul>
-        <li><button (click)="clickSidenavClose()">Close</button></li>
         @for(url of urls; track url){
             <li>
                 <a routerLink="/{{url.url}}">{{url.page}}</a>

@@ -4,6 +4,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { AooService } from '../../../shared/service/aoo.service';
 import { Aoo } from '../../../shared/interface/aoo';
 import { Observable } from 'rxjs';
@@ -18,7 +19,8 @@ import { error } from 'console';
     MatFormFieldModule,
     MatRadioModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
 
   ],
   templateUrl: './aoo-register-page.component.html',
@@ -33,6 +35,7 @@ export class AooRegisterPageComponent {
   userParticipation:string = ""
   a: any;
   aooHoldList?: Observable<Aoo[]>;
+  aooTitles: string[] = ["2024/08/13 23:00", "2024/09/07 23:00"];
   constructor(private aooService: AooService){}
 
   submitAooRegister(): void{
