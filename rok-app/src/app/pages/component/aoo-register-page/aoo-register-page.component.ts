@@ -6,7 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AooService } from '../../../shared/service/aoo.service';
-import { Aoo } from '../../../shared/interface/aoo';
+import { IAoo } from '../../../shared/interface/aoo';
 import { Observable } from 'rxjs';
 import { resolve } from 'path';
 import { response } from 'express';
@@ -28,22 +28,25 @@ import { error } from 'console';
 })
 export class AooRegisterPageComponent {
   userAooRegisterInfo = new FormGroup({
+    aooTitle: new FormControl(''),
     userName: new FormControl(''),
     userParticipation: new FormControl(''),
   });
+  aooTitle: string = "";
   userName:string = ""
   userParticipation:string = ""
   a: any;
-  aooHoldList?: Observable<Aoo[]>;
+  aooHoldList?: Observable<IAoo[]>;
   aooTitles: string[] = ["2024/08/13 23:00", "2024/09/07 23:00"];
   constructor(private aooService: AooService){}
 
   submitAooRegister(): void{
+    this.aooTitle = JSON.stringify(this.userAooRegisterInfo.value.aooTitle);
     this.userName = JSON.stringify(this.userAooRegisterInfo.value.userName);
     this.userParticipation = JSON.stringify(this.userAooRegisterInfo.value.userParticipation);
     this.aooService.getAooHoldList().subscribe(
       {
-        next: (data:Aoo[]) => {
+        next: (data:IAoo[]) => {
           let a = data;
           console.log(a);
         },

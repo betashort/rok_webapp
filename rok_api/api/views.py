@@ -24,7 +24,15 @@ class AooHoldAPIView(views.APIView):
         #データを登録する
         serializer.save()
         return Response(serializer.data, status.HTTP_201_CREATED)
-
+    
+    def delete(self, request, pk, *args, **kwargs):
+        # aoo_hold = AooHold.objects.get(id=pk)
+        # serializer = AooHoldSerializer(data=aoo_hold)
+        # serializer.is_valid(raise_exception=True)
+        aoo_hold = get_object_or_404(AooHold, pk=pk)
+        aoo_hold.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+        
 class AooRegisterAPI(views.APIView):
     
     def post(self, request, *args, **kwargs):

@@ -4,7 +4,7 @@ from .models import AooHold, AooRegister
 class AooHoldSerializer(serializers.ModelSerializer):
     class Meta:
         model = AooHold
-        fields = ["id", "titel"]
+        fields = ["id", "title"]
     
 class AooRegisterSerializer(serializers.ModelSerializer):
     class Meta:

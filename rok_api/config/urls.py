@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     #本モデルの取得・登録のエンドポイント
     path("api/aoo/", views.AooHoldAPIView.as_view()),
+    path("api/aoo/<pk>", views.AooHoldAPIView.as_view()),
     path("api/aoo/register/", views.AooRegisterAPI.as_view()),
     path("api/aoo/member/<pk>/", views.AooRegisterMemberAPI.as_view()),
 ]

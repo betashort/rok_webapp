@@ -1,40 +1,57 @@
 <div class="wrap-aoo-register">
-    <h2>AOO登録ページ</h2>
+  <h2>AOO登録ページ</h2>
+  <form [formGroup]="userAooRegisterInfo">
     <h3>開催日</h3>
     <mat-form-field>
-        <mat-select required>
-            @for (aooTitle of aooTitles; track aooTitle) {
-            <mat-option [value]="aooTitle">{{ aooTitle }}</mat-option>
-            }
-        </mat-select>
+      <mat-select formControlName="aooTitle" required>
+        @for (aooTitle of aooTitles; track aooTitle) {
+        <mat-option [value]="aooTitle">{{
+          aooTitle
+        }}</mat-option>
+        }
+      </mat-select>
     </mat-form-field>
-    <form [formGroup]="userAooRegisterInfo">
-        <div class="userName">
-            <mat-form-field class="example-full-width">
-                <mat-label>ユーザ名</mat-label>
-                <input matInput formControlName="userName" placeholder="Ex. betashort">
-            </mat-form-field>
-        </div>
 
-        <div>
-            <mat-radio-group formControlName="userParticipation">
-                <mat-radio-button class="example-margin" value="true">参加</mat-radio-button>
-                <mat-radio-button class="example-margin" value="false">不参加</mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>パスワード</mat-label>
-                <input matInput required>
-            </mat-form-field>
-        </div>
-        <div>
-            <button mat-flat-button (click)="submitAooRegister()" disabled="true">submit</button>
-        </div>
-    </form>
-    <div class="wrap-message">
-        <p>ユーザ名: {{userName}}</p>
-        <p>参加可否: {{userParticipation}}</p>
-        <p>登録可否: </p>
+    <div class="userName">
+      <mat-form-field class="">
+        <mat-label>ユーザ名</mat-label>
+        <input
+          matInput
+          formControlName="userName"
+          placeholder="Ex. betashort"
+        />
+      </mat-form-field>
     </div>
+
+    <div>
+      <mat-radio-group formControlName="userParticipation">
+        <mat-radio-button class="example-margin" value="true"
+          >参加</mat-radio-button
+        >
+        <mat-radio-button class="example-margin" value="false"
+          >不参加</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>パスワード</mat-label>
+        <input matInput required />
+      </mat-form-field>
+    </div>
+    <div>
+      <button
+        mat-flat-button
+        (click)="submitAooRegister()"
+      >
+        submit
+      </button>
+    </div>
+  </form>
+  <div class="wrap-message">
+    <p>開催日: {{aooTitle}}</p>
+    <p>ユーザ名: {{ userName }}</p>
+    <p>参加可否: {{ userParticipation }}</p>
+    <p>登録可否:</p>
+  </div>
 </div>

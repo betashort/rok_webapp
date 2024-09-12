@@ -1,4 +1,4 @@
-export interface Aoo {
+export interface IAoo {
     id: string,
     title: string,
 }

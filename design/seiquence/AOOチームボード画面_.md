@@ -20,5 +20,4 @@ sequenceDiagram
     server ->> aoo_teamboard : 
     aoo_teamboard ->> user: 保存完了を通知する 
     
-    
 ```
