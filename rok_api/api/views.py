@@ -3,7 +3,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from .models import AooHold, AooRegister
-from .serializers import AooHoldSerializer, AooRegisterSerializer
+from .serializers import AooHoldSerializer, AooMemberSerializer, AooRegisterSerializer
 
 
 class AooHoldAPIView(views.APIView):
@@ -50,7 +50,13 @@ class AooRegisterMemberAPI(views.APIView):
         #pkと一致する一覧を取得する
         aoo_register_members = AooRegister.objects.filter(aoo_id=pk, user_participation=True)
         #シリアライズする
-        serializer = AooRegisterSerializer(instance=aoo_register_members, many=True)
+        serializer = AooMemberSerializer(instance=aoo_register_members, many=True)
         #レスポンスを返す
         return Response(serializer.data)
+    
+    def update(self, request, pk, *args, **kwargs):
+        return
+    
+    def delete(self, request, pk, *args, **kwargs):
+        return
     

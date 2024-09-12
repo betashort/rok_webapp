@@ -1,13 +1,11 @@
 <div class="wrap-aoo-register">
   <h2>AOO登録ページ</h2>
-  <form [formGroup]="userAooRegisterInfo">
+  <form [formGroup]="formUserAooRegisterInfo">
     <h3>開催日</h3>
     <mat-form-field>
       <mat-select formControlName="aooTitle" required>
-        @for (aooTitle of aooTitles; track aooTitle) {
-        <mat-option [value]="aooTitle">{{
-          aooTitle
-        }}</mat-option>
+        @for (aooHold of aooHoldList; track aooHold.id) {
+        <mat-option [value]="aooHold.id">{{ aooHold.title }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
@@ -36,20 +34,21 @@
     <div>
       <mat-form-field class="example-full-width">
         <mat-label>パスワード</mat-label>
-        <input matInput required />
+        <input matInput required formControlName="password" />
       </mat-form-field>
     </div>
     <div>
       <button
         mat-flat-button
         (click)="submitAooRegister()"
+        [disabled]="formUserAooRegisterInfo.invalid"
       >
         submit
       </button>
     </div>
   </form>
   <div class="wrap-message">
-    <p>開催日: {{aooTitle}}</p>
+    <p>開催日: {{ aooTitle }}</p>
     <p>ユーザ名: {{ userName }}</p>
     <p>参加可否: {{ userParticipation }}</p>
     <p>登録可否:</p>

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { IAoo } from '../interface/aoo';
+import { IAoo, IAooResister } from '../interface/aoo';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AooService {
   constructor(private http: HttpClient) { 
     
   }
-  
+
   /**
    * get aoo hold title list
    */
@@ -36,7 +36,10 @@ export class AooService {
     return this.http.delete<IAoo[]>(this.AOOURL + "aoo/" + pk).pipe();
   }
 
-
+  postAooMember(body: IAooResister){
+    return this.http.post<IAooResister[]>(this.AOOURL + "aoo/register/", body).pipe();
+    
+  }
 
   // getAooHoldList(){
   //   return new Promise(( resolve, reject) =>{

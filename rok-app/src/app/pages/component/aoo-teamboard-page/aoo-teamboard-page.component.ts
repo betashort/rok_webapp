@@ -45,14 +45,9 @@ export class AooTeamboardPageComponent {
 
   ngOnInit(): void {
     //Create FormGroup
-    this.selectedUserAooInfo = new FormGroup({
-      userName: new FormControl(''),
-      userRole: new FormControl(''),
-      userTeleportArea: new FormControl(''),
-      userRoleDetail: new FormControl(''),
-    });
     //getting sessionStrage
     this.getSessionItemsTeleportArea();
+
   }
   ngOnDestroy(): void {
     //saving sessionStrage
@@ -96,6 +91,10 @@ export class AooTeamboardPageComponent {
       default:
         break;
     }
+  }
+  
+  updateMemberlist(){
+
   }
   /**
    * drag&Drop function

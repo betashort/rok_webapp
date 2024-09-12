@@ -9,4 +9,16 @@ class AooHoldSerializer(serializers.ModelSerializer):
 class AooRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = AooRegister
-        fields = ["aoo_id", "user_name",  "user_paticipation", "user_position"]
+        exclude = ["user_position", "created_at"]
+    def validate(self, data):
+        password = data.get("password")
+        if password != "2143":
+            raise serializers.ValidationError(
+                "パスワードが違います。"
+            )
+        return data
+
+class AooMemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AooRegister
+        fields = ["id", "user_name", "aoo_id"]

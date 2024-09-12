@@ -29,5 +29,7 @@ class AooRegister(models.Model):
     user_participation = models.BooleanField(verbose_name="参加可否",  null=True, blank=True)
     #user position
     user_position = models.CharField(verbose_name="ポジション", max_length=20, null=True, blank=True)
+    #password
+    password = models.CharField(verbose_name="パスワード", max_length=10, null=True, blank=True)
     #created date
     created_at = models.DateTimeField(verbose_name="登録日", auto_now_add=True)
