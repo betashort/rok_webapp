@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -13,7 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-
+import { IAoo, IAooMember } from '../../../shared/interface/aoo';
+import { AooService } from '../../../shared/service/aoo.service';
 @Component({
   selector: 'app-aoo-teamboard-page',
   standalone: true,
@@ -35,19 +36,23 @@ export class AooTeamboardPageComponent {
   roles: String[] = ['北', '棺', '南'];
   teleportAreas: String[] = ['初回 北', '北', '初回 南', '南'];
   //UserAooInfo FormGroup
-  selectedUserAooInfo!: FormGroup;
+  selectedAoo!: FormControl;
+  aooHoldList: IAoo[] = [];
+  aooMemberList: IAooMember[] = []
   //Drag&Drop's List Data
   north: string[] = [];
   arc: string[] = [];
   south: string[] = [];
 
-  constructor() {}
+  constructor(private aooService: AooService) {
+    this.selectedAoo = new FormControl('', [Validators.required])
+  }
 
   ngOnInit(): void {
     //Create FormGroup
     //getting sessionStrage
     this.getSessionItemsTeleportArea();
-
+    this.getAooList();
   }
   ngOnDestroy(): void {
     //saving sessionStrage
@@ -57,22 +62,22 @@ export class AooTeamboardPageComponent {
   ngDoCheck(): void {}
 
   // add userInfo -> Drag&Drop List
-  add() {
-    console.log(JSON.stringify(this.selectedUserAooInfo.value));
-    switch (this.selectedUserAooInfo.value.userRole) {
-      case '北':
-        this.north.push(this.selectedUserAooInfo.value.userName);
-        break;
-      case '棺':
-        this.arc.push(this.selectedUserAooInfo.value.userName);
-        break;
-      case '南':
-        this.south.push(this.selectedUserAooInfo.value.userName);
-        break;
-      default:
-        break;
-    }
-  }
+  // add() {
+  //   console.log(JSON.stringify(this.selectedUserAooInfo.value));
+  //   switch (this.selectedUserAooInfo.value.userRole) {
+  //     case '北':
+  //       this.north.push(this.selectedUserAooInfo.value.userName);
+  //       break;
+  //     case '棺':
+  //       this.arc.push(this.selectedUserAooInfo.value.userName);
+  //       break;
+  //     case '南':
+  //       this.south.push(this.selectedUserAooInfo.value.userName);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
   // Clear userInfo
   clearListItem(clearItem: string, area: string): void {
     switch (area) {
@@ -92,9 +97,26 @@ export class AooTeamboardPageComponent {
         break;
     }
   }
-  
+  getAooList() {
+    this.aooService.getAooHoldList().subscribe({
+      next: (data: IAoo[]) => {
+        this.aooHoldList = data;
+      },
+      error: (fail: any) => {
+        console.log(fail);
+      },
+    });
+  }
   updateMemberlist(){
-
+    let aoo_id:string = this.selectedAoo.value;
+    this.aooService.getAooMembersList(aoo_id).subscribe({
+      next: (data: IAooMember[]) => {
+        this.aooMemberList = data;
+      },
+      error: (fail: any) => {
+        console.log(fail);
+      }
+    })
   }
   /**
    * drag&Drop function

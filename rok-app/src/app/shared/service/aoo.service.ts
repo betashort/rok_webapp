@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { IAoo, IAooResister } from '../interface/aoo';
+import { IAoo, IAooMember, IAooResister } from '../interface/aoo';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,10 @@ export class AooService {
     
   }
 
+  getAooMembersList(aoo_id:string): Observable<IAooMember[]>{
+    return this.http.get<IAooMember[]>(this.AOOURL + "aoo/member/" + aoo_id)
+    .pipe();
+  }
   // getAooHoldList(){
   //   return new Promise(( resolve, reject) =>{
   //     fetch("http://localhost:8000/api/aoo/",

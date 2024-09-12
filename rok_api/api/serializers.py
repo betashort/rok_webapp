@@ -9,7 +9,7 @@ class AooHoldSerializer(serializers.ModelSerializer):
 class AooRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = AooRegister
-        exclude = ["user_position", "created_at"]
+        exclude = ["created_at"]
     def validate(self, data):
         password = data.get("password")
         if password != "2143":
@@ -21,4 +21,4 @@ class AooRegisterSerializer(serializers.ModelSerializer):
 class AooMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = AooRegister
-        fields = ["id", "user_name", "aoo_id"]
+        fields = ["id", "user_name", "aoo_id", "user_position"]

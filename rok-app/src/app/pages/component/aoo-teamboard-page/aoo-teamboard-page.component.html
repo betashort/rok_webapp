@@ -1,14 +1,14 @@
 <div class="aoo-teamboard">
-  <!-- <form>
+  <form>
     <mat-form-field>
-      <mat-select required>
+      <mat-select required [formControl]="selectedAoo">
         @for (aooHold of aooHoldList; track aooHold.id) {
         <mat-option [value]="aooHold.id">{{ aooHold.title }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
-  </form> -->
-  <button (onclick)="updateMemberlist()">
+  </form>
+  <button (click)="updateMemberlist()">
     <mat-icon fontIcon="sync"></mat-icon>
   </button>
   <div cdkDropListGroup>

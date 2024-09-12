@@ -10,9 +10,9 @@ export interface IAooResister {
     password: string
 }
 
-export interface IAooMembers {
+export interface IAooMember {
     aoo_id: string;
     id: string;
     user_name: string;
-    
+    user_position: string;
 }
