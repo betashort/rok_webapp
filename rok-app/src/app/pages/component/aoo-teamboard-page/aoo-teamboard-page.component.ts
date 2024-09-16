@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table'
 import { IAoo, IAooMember } from '../../../shared/interface/aoo';
 import { AooService } from '../../../shared/service/aoo.service';
 @Component({
@@ -24,6 +25,7 @@ import { AooService } from '../../../shared/service/aoo.service';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatTableModule,
     CdkDropListGroup,
     CdkDropList,
     CdkDrag,
@@ -39,6 +41,7 @@ export class AooTeamboardPageComponent {
   selectedAoo!: FormControl;
   aooHoldList: IAoo[] = [];
   aooMemberList: IAooMember[] = []
+  displayedColumns: string[] = ['user_name', 'user_position'];
   //Drag&Drop's List Data
   north: string[] = [];
   arc: string[] = [];

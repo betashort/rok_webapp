@@ -11,62 +11,18 @@
   <button (click)="updateMemberlist()">
     <mat-icon fontIcon="sync"></mat-icon>
   </button>
-  <div cdkDropListGroup>
-    <div class="example-container">
-      <h2>北</h2>
-      <div
-        cdkDropList
-        [cdkDropListData]="north"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        @for (item of north; track item) {
-        <div class="example-box" cdkDrag>
-          <div>{{ item }}</div>
-          <button (click)="clearListItem(item, 'north')">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </div>
-        }
-      </div>
-    </div>
-    <div class="example-container">
-      <h2>棺</h2>
+  <table mat-table [dataSource]="aooMemberList">
+    <ng-container matColumnDef="user_name">
+      <th mat-header-cell *matHeaderCellDef> ユーザ名</th>
+      <td mat-cell *matCellDef="let element">{{element.user_name}}</td>
+    </ng-container>
 
-      <div
-        cdkDropList
-        [cdkDropListData]="arc"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        @for (item of arc; track item) {
-        <div class="example-box" cdkDrag>
-          <div>{{ item }}</div>
-          <button (click)="clearListItem(item, 'arc')">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </div>
-        }
-      </div>
-    </div>
-    <div class="example-container">
-      <h2>南</h2>
+    <ng-container matColumnDef="user_position">
+      <th mat-header-cell *matHeaderCellDef>ポジション</th>
+      <td mat-cell *matCellDef="let element">{{element.user_position}}</td>
+    </ng-container>
 
-      <div
-        cdkDropList
-        [cdkDropListData]="south"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        @for (item of south; track item) {
-        <div class="example-box" cdkDragq>
-          <div>{{ item }}</div>
-          <button (click)="clearListItem(item, 'south')">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </div>
-        }
-      </div>
-    </div>
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
