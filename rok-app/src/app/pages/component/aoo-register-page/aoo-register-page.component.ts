@@ -5,17 +5,20 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+/**
+ * Angular Material
+ */
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+/**
+ * Own meterial
+ */
 import { AooService } from '../../../shared/service/aoo.service';
 import { IAoo, IAooResister } from '../../../shared/interface/aoo';
-import { Observable } from 'rxjs';
-import { resolve } from 'path';
-import { response } from 'express';
-import { error } from 'console';
+
 
 @Component({
   selector: 'app-aoo-register-page',
@@ -32,6 +35,7 @@ import { error } from 'console';
   styleUrl: './aoo-register-page.component.scss',
 })
 export class AooRegisterPageComponent {
+  //User Register Infomation
   formUserAooRegisterInfo = new FormGroup({
     aooTitle: new FormControl('', [Validators.required]),
     userName: new FormControl('', [Validators.required]),

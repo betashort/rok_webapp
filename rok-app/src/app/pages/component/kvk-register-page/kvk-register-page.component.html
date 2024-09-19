@@ -1,0 +1,131 @@
+<div>
+  <p>戦績</p>
+  <div>
+    <select>
+      <option>事前</option>
+      <option>事後</option>
+    </select>
+  </div>
+  <div>
+    <p>撃破ポイント</p>
+    <table>
+      <tr>
+        <th>撃破ポイント</th>
+        <td>
+          <mat-form-field>
+            <mat-label>撃破数</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="death-counts">
+    <h3>戦死</h3>
+    <table>
+      <tr>
+        <th></th>
+        <th>T4</th>
+        <th>T5</th>
+      </tr>
+      <tr>
+        <th>歩兵</th>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T4歩兵</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T5歩兵</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>騎兵</th>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T4騎兵</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T5騎兵</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>弓兵</th>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T4弓兵</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T5弓兵</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <th>攻城兵器</th>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T4攻城兵器</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>T5攻城兵器</mat-label>
+            <input matInput placeholder="Ex. 1234567" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h3>オプション</h3>
+    <h4>治療した部隊数</h4>
+    <mat-form-field>
+        <mat-label>治療した部隊数</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <h4>野蛮人撃破数</h4>
+    <table>
+        <tr>
+            <th></th>
+            <th>撃破数</th>
+        </tr>
+        <tr>
+            <th>野蛮人</th>
+            <td>
+                <mat-form-field>
+                    <mat-label>野蛮人</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <th>集落</th>
+            <td>
+                <mat-form-field>
+                    <mat-label>野蛮人集落</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+  </div>
+  <div>
+    <button mat-flat-button>
+        Submit
+    </button>
+  </div>
+</div>

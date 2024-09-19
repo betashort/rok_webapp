@@ -1,18 +1,20 @@
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
-/**
- * Angular Material
- */
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table'
-/**
- * Own Material
- */
 import { IAoo, IAooMember } from '../../../shared/interface/aoo';
 import { AooService } from '../../../shared/service/aoo.service';
 @Component({
@@ -26,6 +28,9 @@ import { AooService } from '../../../shared/service/aoo.service';
     MatSelectModule,
     MatInputModule,
     MatTableModule,
+    CdkDropListGroup,
+    CdkDropList,
+    CdkDrag,
   ],
   templateUrl: './aoo-teamboard-page.component.html',
   styleUrl: './aoo-teamboard-page.component.scss',
@@ -38,8 +43,12 @@ export class AooTeamboardPageComponent {
   selectedAoo!: FormControl;
   aooHoldList: IAoo[] = [];
   aooMemberList: IAooMember[] = []
-  displayedColumns: string[] = ['user_name', 'user_position', 'user_role', 'user_description'];
- 
+  displayedColumns: string[] = ['user_name', 'user_position'];
+  //Drag&Drop's List Data
+  north: string[] = [];
+  arc: string[] = [];
+  south: string[] = [];
+
   constructor(private aooService: AooService) {
     this.selectedAoo = new FormControl('', [Validators.required])
   }
@@ -72,7 +81,42 @@ export class AooTeamboardPageComponent {
   saveMemberlist(){
     this.aooMemberList;
   }
-
+  // add userInfo -> Drag&Drop List
+  // add() {
+  //   console.log(JSON.stringify(this.selectedUserAooInfo.value));
+  //   switch (this.selectedUserAooInfo.value.userRole) {
+  //     case '北':
+  //       this.north.push(this.selectedUserAooInfo.value.userName);
+  //       break;
+  //     case '棺':
+  //       this.arc.push(this.selectedUserAooInfo.value.userName);
+  //       break;
+  //     case '南':
+  //       this.south.push(this.selectedUserAooInfo.value.userName);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
+  // Clear userInfo
+  clearListItem(clearItem: string, area: string): void {
+    switch (area) {
+      case 'north':
+        let tmpTodo: string[] = this.north;
+        this.north = tmpTodo.filter((item) => item !== clearItem);
+        break;
+      case 'arc':
+        let tmpDoing: string[] = this.arc;
+        this.arc = tmpDoing.filter((item) => item !== clearItem);
+        break;
+      case 'south':
+        let tmpDone: string[] = this.south;
+        this.south = tmpDone.filter((item) => item !== clearItem);
+        break;
+      default:
+        break;
+    }
+  }
   getAooList() {
     this.aooService.getAooHoldList().subscribe({
       next: (data: IAoo[]) => {
@@ -84,16 +128,39 @@ export class AooTeamboardPageComponent {
     });
   }
 
+  /**
+   * drag&Drop function
+   * change previous to current item
+   * */
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
   /** 
    * get Drag&Drop list from sessionStrange
   */
   getSessionItemsTeleportArea(): void {
     try {
-      const aooMemberListObjStr = sessionStorage.getItem(
+      const userTeleportAreaListObjStr = sessionStorage.getItem(
         'userTeleportAreaListObj'
       );
-      if (aooMemberListObjStr != null) {
-        this.aooMemberList = JSON.parse(aooMemberListObjStr);
+      if (userTeleportAreaListObjStr != null) {
+        const userTeleportAreaListObj = JSON.parse(userTeleportAreaListObjStr);
+        this.north = userTeleportAreaListObj.north;
+        this.arc = userTeleportAreaListObj.arc;
+        this.south = userTeleportAreaListObj.south;
       } else {
         console.log('null object');
       }
@@ -106,9 +173,14 @@ export class AooTeamboardPageComponent {
   */
   saveSessionItemsTeleportArea(): void {
     try {
+      const userTeleportAreaListObj = {
+        north: this.north,
+        arc: this.arc,
+        south: this.south,
+      };
       sessionStorage.setItem(
         'userTeleportAreaListObj',
-        JSON.stringify(this.aooMemberList)
+        JSON.stringify(userTeleportAreaListObj)
       );
     } catch {
       console.log('no object');

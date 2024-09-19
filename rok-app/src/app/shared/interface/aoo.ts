@@ -15,4 +15,7 @@ export interface IAooMember {
     id: string;
     user_name: string;
     user_position: string;
+    user_role: string;
+    user_description: string;
+
 }

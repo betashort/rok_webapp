@@ -1,28 +1,52 @@
 <div class="aoo-teamboard">
-  <form>
-    <mat-form-field>
-      <mat-select required [formControl]="selectedAoo">
-        @for (aooHold of aooHoldList; track aooHold.id) {
-        <mat-option [value]="aooHold.id">{{ aooHold.title }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </form>
-  <button (click)="updateMemberlist()">
-    <mat-icon fontIcon="sync"></mat-icon>
-  </button>
-  <table mat-table [dataSource]="aooMemberList">
-    <ng-container matColumnDef="user_name">
-      <th mat-header-cell *matHeaderCellDef> ユーザ名</th>
-      <td mat-cell *matCellDef="let element">{{element.user_name}}</td>
-    </ng-container>
+  <div class="aoo-select">
+    <form>
+      <mat-form-field>
+        <mat-select required [formControl]="selectedAoo">
+          @for (aooHold of aooHoldList; track aooHold.id) {
+          <mat-option [value]="aooHold.id">{{ aooHold.title }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="control-memberList">
+    <button (click)="updateMemberlist()">
+      <mat-icon fontIcon="sync"></mat-icon>
+    </button>
+    <button (click)="saveMemberlist()">
+      <mat-icon fontIcon="save"></mat-icon>
+    </button>
+  </div>
+  <div>
+    <table mat-table [dataSource]="aooMemberList">
+      <ng-container matColumnDef="user_name">
+        <th mat-header-cell *matHeaderCellDef>ユーザ名</th>
+        <td mat-cell *matCellDef="let element">{{ element.user_name }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="user_position">
-      <th mat-header-cell *matHeaderCellDef>ポジション</th>
-      <td mat-cell *matCellDef="let element">{{element.user_position}}</td>
-    </ng-container>
+      <ng-container matColumnDef="user_position">
+        <th mat-header-cell *matHeaderCellDef>ポジション</th>
+        <td mat-cell *matCellDef="let element">
+          <input type="text" [(ngModel)]="element.user_position" />
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      <ng-container matColumnDef="user_role">
+        <th mat-header-cell *matHeaderCellDef>役割</th>
+        <td mat-cell *matCellDef="let element">
+          <input type="text" [(ngModel)]="element.user_role" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="user_description">
+        <th mat-header-cell *matHeaderCellDef>description</th>
+        <td mat-cell *matCellDef="let element">
+          <input type="text" [(ngModel)]="element.user_description" />
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 </div>

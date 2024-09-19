@@ -4,12 +4,14 @@ import { DashboardComponent } from './pages/component/dashboard/dashboard.compon
 import { AooRegisterPageComponent } from './pages/component/aoo-register-page/aoo-register-page.component';
 import { AooTeamboardPageComponent } from './pages/component/aoo-teamboard-page/aoo-teamboard-page.component';
 import { AdminPageComponent } from './pages/component/admin-page/admin-page.component';
+import { KvkRegisterPageComponent } from './pages/component/kvk-register-page/kvk-register-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: Urls.SLASH + Urls.PATH_DASHBOARD, pathMatch: 'full' },
     { path: Urls.PATH_DASHBOARD, component: DashboardComponent },
     {path: Urls.PATH_AOO_REGISTER, component: AooRegisterPageComponent},
     {path: Urls.PATH_AOO_TEAMBOARD, component: AooTeamboardPageComponent},
-    {path: Urls.PATH_ADMIN, component: AdminPageComponent}
+    {path: Urls.PATH_ADMIN, component: AdminPageComponent},
+    {path: Urls.PATH_KVK_REGISTER, component: KvkRegisterPageComponent}
 
 ];
