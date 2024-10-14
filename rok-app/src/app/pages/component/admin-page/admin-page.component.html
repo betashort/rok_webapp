@@ -1,22 +1,25 @@
 <!-- Register AOO Hold date-->
-<p>オシリス参加アンケートの発行</p>
-<form [formGroup]="formAooHold">
-  <mat-form-field>
-    <mat-label>オシリスの開催日時</mat-label>
-    <input matInput formControlName="title" placeholder="2023/09/07 23:00" />
-  </mat-form-field>
-  <button mat-flat-button (click)="submitAooHold()">発行</button>
-</form>
-<div class="">
-  <p>オシリス一覧</p>
-  <mat-list role="list">
-    @for(aooHold of aooHoldList; track aooHold.id){
-    <mat-list-item>
-      {{ aooHold.title }}
-      <button (click)="deleteAooHold(aooHold.id)"><mat-icon fontIcon="delete"></mat-icon></button>
-    </mat-list-item>
-
-    }
-  </mat-list>
+<div class="admin-page">
+  <p>オシリス参加アンケートの発行</p>
+  <form [formGroup]="formAooHold">
+    <mat-form-field>
+      <mat-label>オシリスの開催日時</mat-label>
+      <input matInput formControlName="title" placeholder="2023/09/07 23:00" />
+    </mat-form-field>
+    <button mat-flat-button (click)="submitAooHold()">発行</button>
+  </form>
+  <div class="">
+    <p>オシリス一覧</p>
+    <mat-list role="list">
+      @for(aooHold of aooHoldList; track aooHold.id){
+      <mat-list-item>
+        {{ aooHold.title }}
+        <button (click)="deleteAooHold(aooHold.id)">
+          <mat-icon fontIcon="delete"></mat-icon>
+        </button>
+      </mat-list-item>
+      }
+    </mat-list>
+  </div>
 </div>
 <!-- KvK Admin Setting-->

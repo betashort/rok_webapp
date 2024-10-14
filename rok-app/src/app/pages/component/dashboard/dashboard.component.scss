@@ -1,0 +1,33 @@
+.dashboard { 
+    width: 100%;
+    height: 100vh;
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard-img img{
+    width: 100%;
+    height: auto;
+}
+
+.dashboard-contents{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    justify-content: center;
+    align-items: center;
+}
+
+ul li {
+    list-style: none;
+}
+@media (min-width: 640px) {
+    .dashboard-contents{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
