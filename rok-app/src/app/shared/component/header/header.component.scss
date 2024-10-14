@@ -1,22 +1,33 @@
-.wrap-logo h2 {
+.side-nav-icon {
+    color: white;
+}
+.logo h2 {
     font-size: 24px;
+    color: white;
+    font-style: bold;
 }
 .wrap-header{
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #91acff;
+    background-color: #122561;
     justify-content: center;
     align-items: center;
 }
 .wrap-sidenav-button{
     margin: 10px;
 }
-.wrap-logo { 
+.logo { 
     width: 100%;
 }
 .wrap-navbar{
     
+}
+.login-icon {
+    color: white;
+}
+.login-out {
+    color: white;
 }
 nav ul {
     text-align: right;
