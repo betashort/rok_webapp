@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-v=p8-kg2^8=3p&srlu)maji72_3g8%wo#6r6-9&d&*v1y)!olh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost",
+                 "rok-api.betashort-lab.com"]
 
 
 # Application definition
@@ -77,17 +78,23 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "rok_api",
+#         "USER": "root",
+#         "PASSWORD": "root",
+#         "HOST": "localhost",
+#         "PORT": "3306",
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "rok_api",
-        "USER": "root",
-        "PASSWORD": "root",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -133,4 +140,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #CORS Setting
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
+    "https://rok-app.betashort-lab.com"
 ]

@@ -10,6 +10,7 @@ import { IAoo, IAooMember, IAooResister } from '../interface/aoo';
 
 export class AooService {
   AOOURL: string = "http://localhost:8000/api/";
+  //AOOURL: string = "https://rok-api.betashort-lab.com/api/";
   constructor(private http: HttpClient) { 
     
   }

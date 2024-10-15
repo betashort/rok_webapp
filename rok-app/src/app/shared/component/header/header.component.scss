@@ -1,11 +1,3 @@
-.side-nav-icon {
-    color: white;
-}
-.logo h2 {
-    font-size: 24px;
-    color: white;
-    font-style: bold;
-}
 .wrap-header{
     display: flex;
     width: 100%;
@@ -17,11 +9,21 @@
 .wrap-sidenav-button{
     margin: 10px;
 }
+.side-nav-icon {
+    color: white;
+}
 .logo { 
     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
-.wrap-navbar{
-    
+.logo h2 {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    color: white;
 }
 .login-icon {
     color: white;
@@ -31,6 +33,7 @@
 }
 nav ul {
     text-align: right;
+    padding-left: 0;
 }
 nav ul li{
     list-style: none;
