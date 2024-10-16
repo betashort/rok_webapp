@@ -1,0 +1,17 @@
+<div class="log-in-page">
+
+    <div class="log-in-form">
+        <form [formGroup]="formUserInfo">
+            <div>
+                <span class="userName">ユーザ名</span>
+                <input formControlName="userName" />
+            </div>
+            <div>
+                <label>パスワード</label>
+                <input formControlName="password" />
+            </div>
+        </form>
+    </div>
+    <button (click)="onClick()">ボタン</button>
+    {{user}}
+</div>

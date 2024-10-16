@@ -1,6 +1,7 @@
 export class Urls {
     static readonly SLASH = '/';
     static readonly PATH_SIGN_IN = 'sign-in';
+    static readonly PATH_LOGIN = 'login';
     static readonly PATH_RESULT_REGISTER_FORM = 'result-register-form';
     static readonly PATH_DASHBOARD = 'dashboard-page';
     static readonly PATH_RESOURCE_CALCULATOR = 'resource-calculator';
@@ -17,6 +18,7 @@ export interface IPageUrlPair {
 }
 
 export const PAGEURLS: IPageUrlPair[] = [
+    {page: 'ログイン', url:"login"},
     {page: 'ダッシュボード', url:"dashboard-page"},
     {page: 'オシリス登録', url: 'aoo-register'},
     {page: 'オシリスチームボード', url: 'aoo-teamboard'},
