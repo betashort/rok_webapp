@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,9 +39,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #3rd party apps
     "rest_framework",
+    "corsheaders",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
+    #my app
     "api",
-    "corsheaders"
+    "accounts",
+
 ]
 
 MIDDLEWARE = [
@@ -142,3 +149,18 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
     "https://rok-app.betashort-lab.com"
 ]
+
+#DRF
+REST_FRAMEWORK = {
+    "DEFAUT_AUTHENTICATION_CLASSSES": [
+        "rest_framework_simplejwt.authntication.JWTAuthentication",
+    ],
+}
+#dj-rest-auth
+REST_USE_JWT = True
+
+#django-rest-framework-simplejwt
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES" : ('JWT', ),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30)
+}
