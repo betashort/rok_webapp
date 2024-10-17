@@ -18,9 +18,9 @@
       <mat-icon fontIcon="save"></mat-icon>
     </button>
   </div>
-  <div>
+  <div class="member-list-table">
     <table mat-table [dataSource]="aooMemberList">
-      <ng-container matColumnDef="user_name">
+      <ng-container matColumnDef="user_name" sticky>
         <th mat-header-cell *matHeaderCellDef>ユーザ名</th>
         <td mat-cell *matCellDef="let element">{{ element.user_name }}</td>
       </ng-container>

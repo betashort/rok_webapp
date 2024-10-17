@@ -4,9 +4,33 @@
 }
 
 .log-in-form {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 300px;
+    margin: 10px auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    // background-color: gray;
+    border: 5px solid;
+    border-color: gray;
+    border-radius: 10%;
 }
+h2 {
+    font-size: 24px;
+}
+label {
+    display: block;
+}
+.userName {
+    margin-top: 10px;
+}
+.password {
+    margin-top: 10px;
+}
+.log-in-button {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+

@@ -1,17 +1,16 @@
 <div class="log-in-page">
-
-    <div class="log-in-form">
-        <form [formGroup]="formUserInfo">
-            <div>
-                <span class="userName">ユーザ名</span>
-                <input formControlName="userName" />
-            </div>
-            <div>
-                <label>パスワード</label>
-                <input formControlName="password" />
-            </div>
-        </form>
-    </div>
-    <button (click)="onClick()">ボタン</button>
-    {{user}}
+  <div class="log-in-form">
+    <form [formGroup]="formUserInfo">
+        <h2>ログイン</h2>
+      <div class="userName">
+        <label >ユーザ名</label>
+        <input formControlName="userName" />
+      </div>
+      <div class="password">
+        <label>パスワード</label>
+        <input formControlName="password" />
+      </div>
+      <button class="log-in-button" (click)="login()">ボタン</button>
+    </form>
+  </div>
 </div>

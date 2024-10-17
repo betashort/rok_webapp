@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms'
+import { AuthService } from '../../../core/service/auth.service';
+
 @Component({
   selector: 'app-login-page',
   standalone: true,
@@ -23,9 +25,11 @@ export class LoginPageComponent {
 
   user = "";
 
-  onClick() {
-    this.user = JSON.stringify(this.formUserInfo.value);
+  login() {
+    const userName = this.formUserInfo.value.userName as string;
+    const password = this.formUserInfo.value.password as string;
+
+    AuthService.login(userName, password);
   }
-  
 
 }

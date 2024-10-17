@@ -23,11 +23,15 @@
     <ul>
       @if ( loginState ){
       <li>
-        <mat-icon class="login-icon" fontIcon="login"></mat-icon>
+        <a routerLink="/login">
+          <mat-icon class="login-icon" fontIcon="login"></mat-icon>
+        </a>
       </li>
       }@else{
       <li>
-        <mat-icon class="logout-icon" fontIcon="logout"></mat-icon>
+        <a routerLink="/login">
+          <mat-icon class="logout-icon" fontIcon="logout"></mat-icon>
+        </a>
       </li>
       }
     </ul>
