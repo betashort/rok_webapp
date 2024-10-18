@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
+import { sha256 } from '../../../core/utils/hash256';
 
 @Component({
   selector: 'app-login-page',
@@ -23,16 +24,19 @@ export class LoginPageComponent {
   user = '';
   errorMessage = '';
   constructor(private authService: AuthService) {}
-  login() {
+  async login() {
     const userName = this.formUserInfo.value.userName as string;
     const password = this.formUserInfo.value.password as string;
-
-    this.authService
-      .login(userName, password);
-
-    // this.authService.login(userName, password).subscribe({
-    //   next: (data) => {},
-    //   error: (error) => { console.log(error)},
-    // });
+    //Hash
+    const passwordHash = await sha256(password).then((p) => {
+      return p;
+    });
+    this.authService.login(userName, passwordHash).subscribe({
+      next: (response) => {},
+      error: (error) => {
+        this.errorMessage = error.status;
+        console.log(this.errorMessage);
+      },
+    });
   }
 }
