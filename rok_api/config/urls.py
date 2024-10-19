@@ -17,13 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api import views
+from aoo import views as aooViews
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    #本モデルの取得・登録のエンドポイント
-    path("api/aoo/", views.AooHoldAPIView.as_view()),
-    path("api/aoo/<pk>", views.AooHoldAPIView.as_view()),
-    path("api/aoo/register/", views.AooRegisterAPI.as_view()),
-    path("api/aoo/member/<pk>/", views.AooRegisterMemberAPI.as_view()),
+    #Auth
+    path("api/auth/sighin"),
+    path("api/auth/login", ),
+    path("api/auth/logout"),
+    #kvk
+    path("api/kvk/"),
+    #Aoo
+    path("api/aoo/", aooViews.AooHoldAPIView.as_view()),
+    path("api/aoo/<pk>", aooViews.AooHoldAPIView.as_view()),
+    path("api/aoo/register/", aooViews.AooRegisterAPI.as_view()),
+    path("api/aoo/member/<pk>/", aooViews.AooRegisterMemberAPI.as_view()),
 ]

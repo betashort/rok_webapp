@@ -15,7 +15,7 @@ const httpOptions = {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(userName: string, password: string) {
+  signin(userName: string, password: string) {
     // let hash = sha256(password);
     // let passwordHash = await hash.then((b) => {
     //   return b;
@@ -26,9 +26,22 @@ export class AuthService {
     return this.http
       .post(AUTH_API + 'signin', { userName, password }, httpOptions)
       .pipe();
+  };
+
+  login(userName: string, password: string) {
+    // let hash = sha256(password);
+    // let passwordHash = await hash.then((b) => {
+    //   return b;
+    // });
+    // const passwordHash = sha256(password);
+    // console.log(passwordHash);
+
+    return this.http
+      .post(AUTH_API + 'login', { userName, password }, httpOptions)
+      .pipe();
   }
 
   logout() {
-    return this.http.post(AUTH_API + 'signout', {}, httpOptions);
+    return this.http.post(AUTH_API + 'logout', {}, httpOptions).pipe();
   }
 }

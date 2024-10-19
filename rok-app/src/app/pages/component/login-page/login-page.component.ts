@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
 import { sha256 } from '../../../core/utils/hash256';
+import { response } from 'express';
 
 @Component({
   selector: 'app-login-page',
@@ -37,6 +38,13 @@ export class LoginPageComponent {
         this.errorMessage = error.status;
         console.log(this.errorMessage);
       },
+    });
+  }
+
+  logout(){
+    this.authService.logout().subscribe({
+      next: (response) => {},
+      error: (error) => {}
     });
   }
 }
