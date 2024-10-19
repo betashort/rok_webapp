@@ -17,16 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from accounts import views as accountViews
 from aoo import views as aooViews
-
+from kvk import views as kvkViews
 urlpatterns = [
     path("admin/", admin.site.urls),
-    #Auth
-    path("api/auth/sighin"),
-    path("api/auth/login", ),
-    path("api/auth/logout"),
-    #kvk
-    path("api/kvk/"),
+    # #Auth
+    # path("api/auth/sighin"),
+    # path("api/auth/login", ),
+    # path("api/auth/logout"),
+    # #kvk
+    # path("api/kvk/"),
     #Aoo
     path("api/aoo/", aooViews.AooHoldAPIView.as_view()),
     path("api/aoo/<pk>", aooViews.AooHoldAPIView.as_view()),
