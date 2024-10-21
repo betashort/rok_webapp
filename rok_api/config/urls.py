@@ -22,9 +22,9 @@ from aoo import views as aooViews
 from kvk import views as kvkViews
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # #Auth
-    # path("api/auth/sighin"),
-    # path("api/auth/login", ),
+    #Auth
+    path("api/auth/register/", accountViews.ResigterView.as_view()),
+    path("api/auth/login/", accountViews.LoginView.as_view()),
     # path("api/auth/logout"),
     # #kvk
     # path("api/kvk/"),
