@@ -7,7 +7,7 @@ class Account(models.Model):
         db_table = "Accounts"
     
     #id
-    user_id = models.CharField(primary_key=True, editable=False, max_length=20)
+    user_id = models.CharField(primary_key=True, max_length=20)
     #user name
     user_name = models.CharField(verbose_name="user name", max_length=20)
     #password
