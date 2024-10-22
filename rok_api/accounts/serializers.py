@@ -29,22 +29,8 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ["user_id", "user_name", "password", "role"]
-        extra_kwargs = {'password': {'write_only': True}}
-        def create(self, validated_data):
-            account = Account.objects.create_user(**validated_data)
-            return account
-    user_id = serializers.CharField(max_length=20, write_only=True)
-    password = serializers.CharField(write_only=True)
-    
-    def validate(self, data):
-        user_id = data.get('user_id')
-        password = data.get('password')
-        userid = Account.objects.get(user_id=user_id)
-        re_password = Account.objects.get(password=password)
-        if (user_id == userid.user_id):
-            if (password == re_password):
-                return data
-            
-            else:
-                raise serializers.ValidationError("ログイン失敗")
-
+    # def validate(self, data):
+    #     user_id = data.get('user_id')
+    #     user_name = data.get('user_name')
+    #     password = data.get('password')
+        

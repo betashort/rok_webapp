@@ -17,6 +17,9 @@ class ResigterView(APIView):
             # UserIDがすでに使われていた場合
             if Account.objects.filter(user_id=request.data['user_id']).exists():
                 return Response({'error': "既に存在するIDです。"}, status=HTTP_400_BAD_REQUEST)
+                        # UserIDがすでに使われていた場合
+            if Account.objects.filter(user_id=request.data['user_name']).exists():
+                return Response({'error': "既に存在するuser_nameです。"}, status=HTTP_400_BAD_REQUEST)
             try:
                 serializer.save()
             except:
@@ -30,9 +33,15 @@ class ResigterView(APIView):
 class LoginView(APIView):
     
     def post(self, request, *args, **kwargs):
-        serializer = LoginSerializer(data=request.data)
-        
-        if serializer.is_valid(raise_exception=True):
-            return Response({"detail": "ログイン成功"}, status=HTTP_202_ACCEPTED)
-        
-        return Response({"error": "ログイン失敗"}, status=HTTP_400_BAD_REQUEST)
+        user_name = request.data['user_name']
+        password = request.data['password']
+        exit_user = Account.objects.filter(user_name=user_name)
+        serializer = LoginSerializer(instance=exit_user, many=True)
+        try:
+            if len(serializer.data) == 1:
+                if user_name == serializer.data[0]['user_name']:
+                    if password == serializer.data[0]['password']:
+                        return Response({"role": serializer.data[0]['role']}, status=HTTP_200_OK)    
+                return Response({"error": "ログイン失敗"}, status=HTTP_400_BAD_REQUEST)
+        except:
+            return Response({"error": "ログイン失敗"}, status=HTTP_400_BAD_REQUEST)

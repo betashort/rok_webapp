@@ -29,10 +29,10 @@ export class LoginPageComponent {
     const userName = this.formUserInfo.value.userName as string;
     const password = this.formUserInfo.value.password as string;
     //Hash
-    const passwordHash = await sha256(password).then((p) => {
-      return p;
-    });
-    this.authService.login(userName, passwordHash).subscribe({
+    // const passwordHash = await sha256(password).then((p) => {
+    //   return p;
+    // });
+    this.authService.login(userName, password).subscribe({
       next: (response) => {},
       error: (error) => {
         this.errorMessage = error.status;

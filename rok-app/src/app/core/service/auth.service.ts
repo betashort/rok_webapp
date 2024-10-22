@@ -35,9 +35,12 @@ export class AuthService {
     // });
     // const passwordHash = sha256(password);
     // console.log(passwordHash);
-
+    const body = {
+      "user_name": userName,
+      "password" : password,
+    }
     return this.http
-      .post(AUTH_API + 'login', { userName, password }, httpOptions)
+      .post(AUTH_API + 'login/', body, httpOptions)
       .pipe();
   }
 
