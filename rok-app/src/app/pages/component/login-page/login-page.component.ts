@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
 import { sha256 } from '../../../core/utils/hash256';
-import { response } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -24,7 +24,7 @@ export class LoginPageComponent {
 
   user = '';
   errorMessage = '';
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router:Router) {}
   async login() {
     const userName = this.formUserInfo.value.userName as string;
     const password = this.formUserInfo.value.password as string;
@@ -33,7 +33,9 @@ export class LoginPageComponent {
     //   return p;
     // });
     this.authService.login(userName, password).subscribe({
-      next: (response) => {},
+      next: (response) => {
+        this.router.navigate(['/dashboard-page']);
+      },
       error: (error) => {
         this.errorMessage = error.status;
         console.log(this.errorMessage);
