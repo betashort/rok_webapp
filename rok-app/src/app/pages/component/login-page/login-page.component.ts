@@ -8,6 +8,11 @@ import {
 import { AuthService } from '../../../core/service/auth.service';
 import { sha256 } from '../../../core/utils/hash256';
 import { Router } from '@angular/router';
+import { StoreSessionService } from '../../../core/service/store-session.service';
+
+interface responseRole {
+  "role": string;
+};
 
 @Component({
   selector: 'app-login-page',
@@ -16,6 +21,7 @@ import { Router } from '@angular/router';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
 })
+
 export class LoginPageComponent {
   formUserInfo = new FormGroup({
     userName: new FormControl('', [Validators.required]),
@@ -24,7 +30,11 @@ export class LoginPageComponent {
 
   user = '';
   errorMessage = '';
-  constructor(private authService: AuthService, private router:Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private sessionService: StoreSessionService
+  ) {}
   async login() {
     const userName = this.formUserInfo.value.userName as string;
     const password = this.formUserInfo.value.password as string;
@@ -34,7 +44,11 @@ export class LoginPageComponent {
     // });
     this.authService.login(userName, password).subscribe({
       next: (response) => {
+        console.log();
+        this.sessionService.saveSessionItemRole(JSON.stringify(response))
         this.router.navigate(['/dashboard-page']);
+        const role = this.sessionService.getSessionItemRole();
+        console.log(role)
       },
       error: (error) => {
         this.errorMessage = error.status;
@@ -43,10 +57,10 @@ export class LoginPageComponent {
     });
   }
 
-  logout(){
+  logout() {
     this.authService.logout().subscribe({
       next: (response) => {},
-      error: (error) => {}
+      error: (error) => {},
     });
   }
 }

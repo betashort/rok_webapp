@@ -1,3 +1,5 @@
+import { StoreSessionService } from "../../core/service/store-session.service";
+
 export class Urls {
     static readonly SLASH = '/';
     static readonly PATH_SIGN_IN = 'sign-in';
@@ -15,13 +17,14 @@ export class Urls {
 export interface IPageUrlPair {
     page: string;
     url: string;
+    role: string;
 }
 
 export const PAGEURLS: IPageUrlPair[] = [
-    {page: 'ログイン', url:"login"},
-    {page: 'ダッシュボード', url:"dashboard-page"},
-    {page: 'オシリス登録', url: 'aoo-register'},
-    {page: 'オシリスチームボード', url: 'aoo-teamboard'},
-    {page: '管理者ページ', url: 'admin-page'},
-    {page: 'KVK戦力登録ページ', url: 'kvk-register'}
+    {page: 'ログイン', url:"login", role:""},
+    {page: 'ダッシュボード', url:"dashboard-page", role:""},
+    {page: 'オシリス登録', url: 'aoo-register', role: "user"},
+    {page: 'オシリスチームボード', url: 'aoo-teamboard', role:"admin"},
+    {page: '管理者ページ', url: 'admin-page', role:"admin"},
+    {page: 'KVK戦力登録ページ', url: 'kvk-register', role:"role"}
 ]

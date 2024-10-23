@@ -6,14 +6,28 @@ import { AooTeamboardPageComponent } from './pages/component/aoo-teamboard-page/
 import { AdminPageComponent } from './pages/component/admin-page/admin-page.component';
 import { KvkRegisterPageComponent } from './pages/component/kvk-register-page/kvk-register-page.component';
 import { LoginPageComponent } from './pages/component/login-page/login-page.component';
+import { authAdminGuard } from './core/guard/auth-admin.guard';
+import { authUserGuard } from './core/guard/auth-user.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: Urls.SLASH + Urls.PATH_DASHBOARD, pathMatch: 'full' },
-    { path: Urls.PATH_LOGIN, component: LoginPageComponent},
-    { path: Urls.PATH_DASHBOARD, component: DashboardComponent },
-    {path: Urls.PATH_AOO_REGISTER, component: AooRegisterPageComponent},
-    {path: Urls.PATH_AOO_TEAMBOARD, component: AooTeamboardPageComponent},
-    {path: Urls.PATH_ADMIN, component: AdminPageComponent},
-    {path: Urls.PATH_KVK_REGISTER, component: KvkRegisterPageComponent}
+    { path: '', 
+        redirectTo: Urls.SLASH + Urls.PATH_DASHBOARD,
+        pathMatch: 'full' },
+    { path: Urls.PATH_LOGIN, 
+        component: LoginPageComponent},
+    { path: Urls.PATH_DASHBOARD, 
+        component: DashboardComponent },
+    {path: Urls.PATH_AOO_REGISTER, 
+        component: AooRegisterPageComponent,
+    canActivate: [authUserGuard]},
+    {path: Urls.PATH_AOO_TEAMBOARD, 
+        component: AooTeamboardPageComponent,
+    canActivate: [authAdminGuard]},
+    {path: Urls.PATH_ADMIN, 
+        component: AdminPageComponent,
+    canActivate: [authAdminGuard]},
+    {path: Urls.PATH_KVK_REGISTER, 
+        component: KvkRegisterPageComponent,
+    canActivate: [authUserGuard]}
 
 ];

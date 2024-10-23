@@ -1,9 +1,12 @@
 <div class="side-nav">
     <ul>
         @for(url of urls; track url){
-            <li>
-                <a routerLink="/{{url.url}}">{{url.page}}</a>
-            </li>
+            @if(url.role === userRole){
+                {{userRole}}
+                <li>
+                    <a routerLink="/{{url.url}}">{{url.page}}</a>
+                </li>
+            }
         }
     </ul>
 </div>
