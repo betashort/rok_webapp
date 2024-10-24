@@ -1,12 +1,28 @@
 <div class="side-nav">
     <ul>
-        @for(url of urls; track url){
-            @if(url.role === userRole){
-                {{userRole}}
+        @if (userRole == "admin"){
+            @for(url of urls; track url){
                 <li>
                     <a routerLink="/{{url.url}}">{{url.page}}</a>
                 </li>
             }
+        }@else if (userRole == "user") {
+            @for(url of urls; track url){
+                @if (url.role !== "admin"){
+                    <li>
+                        <a routerLink="/{{url.url}}">{{url.page}}</a>
+                    </li>
+                }
+            }
+        }@else {
+            @for(url of urls; track url){
+                @if (url.role == ""){
+                    <li>
+                        <a routerLink="/{{url.url}}">{{url.page}}</a>
+                    </li>
+                }
+            }
         }
+
     </ul>
 </div>
