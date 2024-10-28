@@ -1,25 +1,14 @@
-<!-- Register AOO Hold date-->
 <div class="admin-page">
-  <p>オシリス参加アンケートの発行</p>
-  <form [formGroup]="formAooHold">
-    <mat-form-field>
-      <mat-label>オシリスの開催日時</mat-label>
-      <input matInput formControlName="title" placeholder="2023/09/07 23:00" />
-    </mat-form-field>
-    <button mat-flat-button (click)="submitAooHold()">発行</button>
-  </form>
-  <div class="">
-    <p>オシリス一覧</p>
-    <mat-list role="list">
-      @for(aooHold of aooHoldList; track aooHold.id){
-      <mat-list-item>
-        {{ aooHold.title }}
-        <button (click)="deleteAooHold(aooHold.id)">
-          <mat-icon fontIcon="delete"></mat-icon>
-        </button>
-      </mat-list-item>
-      }
-    </mat-list>
-  </div>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="User">
+      <app-user-manage></app-user-manage>
+    </mat-tab>
+    <mat-tab label="AOO">
+      <app-aoo-manage></app-aoo-manage>
+    </mat-tab>
+    <mat-tab label="KVK">
+      <app-kvk-manage></app-kvk-manage>
+    </mat-tab>
+  </mat-tab-group>
 </div>
-<!-- KvK Admin Setting-->
+
