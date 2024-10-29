@@ -9,8 +9,8 @@ import { IAoo, IAooMember, IAooResister } from '../interface/aoo';
 })
 
 export class AooService {
-  AOOURL: string = "http://localhost:8000/api/";
-  //AOOURL: string = "https://rok-api.betashort-lab.com/api/";
+  //AOOURL: string = "http://localhost:8000/api/";
+  AOOURL: string = "https://rok-api.betashort-lab.com/api/";
   constructor(private http: HttpClient) { 
     
   }
@@ -46,14 +46,4 @@ export class AooService {
     return this.http.get<IAooMember[]>(this.AOOURL + "aoo/member/" + aoo_id)
     .pipe();
   }
-  // getAooHoldList(){
-  //   return new Promise(( resolve, reject) =>{
-  //     fetch("http://localhost:8000/api/aoo/",
-  //       {method: "GET"}
-  //     )
-  //     .then((res) => res.json())
-  //     .then((data) => resolve(data));
-  //   })
-  // }
-
 }

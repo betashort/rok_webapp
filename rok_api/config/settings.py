@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from datetime import timedelta
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     #3rd party apps
     "rest_framework",
     "corsheaders",
-    "rest_framework.authtoken",
-    "dj_rest_auth",
     #my app
     "accounts",
     "aoo",
@@ -138,30 +136,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = os.path.join(BASE_DIR, "static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+MEDIA_ROOT =  BASE_DIR / 'media'
+
 #CORS Setting
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "https://rok-app.betashort-lab.com"
 ]
-
-#DRF
-REST_FRAMEWORK = {
-    "DEFAUT_AUTHENTICATION_CLASSSES": [
-        "rest_framework_simplejwt.authntication.JWTAuthentication",
-    ],
-}
-#dj-rest-auth
-REST_USE_JWT = True
-
-#django-rest-framework-simplejwt
-SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES" : ('JWT', ),
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30)
-}
