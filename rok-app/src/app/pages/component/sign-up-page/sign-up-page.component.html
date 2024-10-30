@@ -1,1 +1,24 @@
-<p>sign-up-page works!</p>
+<div class="sign-up-page">
+    <div class="sign-up-form">
+        <form [formGroup]="formUserInfo">
+            <h2>アカウント登録</h2>
+            <div class="userId">
+                <label>ユーザID</label>
+                <input formControlName="userId" />      
+            </div>
+            <div class="userName">
+                <label>ユーザ名</label>
+                <input formControlName="userName"/>
+            </div>
+            <div class="password">
+                <label>パスワード</label>
+                <input type="password" formControlName="password" />
+            </div>
+            <div class="conform-password">
+                <label>確認用パスワード</label>
+                <input type="password" formControlName="conformPassword" />
+            </div>
+            <button class="sign-up-button" (click)="signUp()">サインアップ</button>
+        </form>
+    </div>
+</div>

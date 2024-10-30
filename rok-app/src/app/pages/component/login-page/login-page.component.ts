@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../../core/service/auth.service';
 import { sha256 } from '../../../core/utils/hash256';
-import { Router } from '@angular/router';
+import { Router,RouterLink } from '@angular/router';
 import { StoreSessionService } from '../../../core/service/store-session.service';
 
 interface responseRole {
@@ -17,7 +17,7 @@ interface responseRole {
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
 })

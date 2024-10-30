@@ -9,13 +9,20 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
+interface IFormUserInfo{
+  userId: string;
+  userName: string;
+  password: string;
+  confirmPassword: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  signin(userName: string, password: string) {
+  signUp(body:IFormUserInfo) {
     // let hash = sha256(password);
     // let passwordHash = await hash.then((b) => {
     //   return b;
@@ -24,7 +31,7 @@ export class AuthService {
     // console.log(passwordHash);
 
     return this.http
-      .post(AUTH_API + 'signin', { userName, password }, httpOptions)
+      .post(AUTH_API + 'signup/', body, httpOptions)
       .pipe();
   };
 
