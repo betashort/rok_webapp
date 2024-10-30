@@ -2,6 +2,10 @@
 1. [システム設計 - ソフトウェア構成 -](#システム設計---ソフトウェア構成--)
 2. [ソフトウェア設計 - 機能 -](#ソフトウェア設計---機能--)
    1. [ログインについて](#ログインについて)
+      1. [ユーザ登録](#ユーザ登録)
+      2. [ログイン](#ログイン)
+      3. [ログアウト](#ログアウト)
+      4. [ユーザ情報の更新](#ユーザ情報の更新)
    2. [KVK戦績登録について](#kvk戦績登録について)
    3. [AOO参加登録について](#aoo参加登録について)
       1. [AOO管理画面](#aoo管理画面)
@@ -20,7 +24,65 @@
 
 ### ログインについて
 
-* JWTによるトークン認証を採用する
+#### ユーザ登録
+
+```mermaid
+
+sequenceDiagram
+    actor user
+    participant front as フロントエンド
+    participant server as APIサーバ
+    
+    user ->> front: ユーザ登録する 
+    front ->> server: [POST] api/auth/signup/ <br> {"userId": , "userName": "", "password": "", "confirmPassword": ""}
+    server ->> front: {"status": ""}
+    front ->> user: ユーザ登録成功/失敗
+    
+```
+
+#### ログイン
+
+```mermaid
+sequenceDiagram
+    actor user
+    participant front as フロントエンド
+    participant server as APIサーバ
+
+    user ->> front: ログインする
+    front ->> server: [POST] api/auth/login/ <br> {"userId": "", "password": ""}
+    server ->> front: {"userId": "", "userName": "", "role":""}
+    front ->> front: sessionStrage <br>{"userId": "", "userName": "", "role":""}
+    front ->> user: ダッシュボードページを表示する
+```
+
+#### ログアウト
+
+```mermaid
+sequenceDiagram
+    actor user
+    participant front as フロントエンド
+    participant server as APIサーバ
+
+    user ->> front: ログアウトする
+    front ->> front: Clear SessionStrage <br> {"userId": "", "userName": "", "role":""}
+    front ->> user: ダッシュボードページを表示する
+```
+
+#### ユーザ情報の更新
+
+```mermaid
+
+sequenceDiagram
+    actor user
+    participant front as フロントエンド
+    participant server as APIサーバ
+    
+    user ->> front: ユーザ情報を更新する 
+    front ->> server: [POST] api/auth/update/ <br> {"userId": , "userName": "", "password": "", "confirmPassword": ""}
+    server ->> front: {"status": ""}
+    front ->> user: ユーザ情報の更新成功/失敗
+    
+```
 
 ### KVK戦績登録について
 
@@ -72,6 +134,7 @@ sequenceDiagram
     admin ->> user: AOOタイトルの削除完了を通知し、タイトル一覧を更新する
     
 ```
+
 ---
 #### AOO参加登録画面
 
