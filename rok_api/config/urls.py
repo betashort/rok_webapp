@@ -25,7 +25,7 @@ urlpatterns = [
     #Auth
     path("api/auth/register/", accountViews.ResigterView.as_view()),
     path("api/auth/login/", accountViews.LoginView.as_view()),
-    # path("api/auth/logout"),
+    path("api/auth/update/", accountViews.UpdateView.as_view()),
     # #kvk
     # path("api/kvk/"),
     #Aoo

@@ -9,12 +9,18 @@ import { LoginPageComponent } from './pages/component/login-page/login-page.comp
 import { authAdminGuard } from './core/guard/auth-admin.guard';
 import { authUserGuard } from './core/guard/auth-user.guard';
 import { SignUpPageComponent } from './pages/component/sign-up-page/sign-up-page.component';
+import { MypageComponent } from './pages/component/mypage/mypage.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: Urls.SLASH + Urls.PATH_DASHBOARD, pathMatch: 'full' },
   { path: Urls.PATH_LOGIN, component: LoginPageComponent },
   { path: Urls.PATH_SIGN_UP, component: SignUpPageComponent },
   { path: Urls.PATH_DASHBOARD, component: DashboardComponent },
+  {
+    path: Urls.PATH_MYPAGE,
+    component: MypageComponent,
+    canActivate: [authUserGuard],
+  },
   {
     path: Urls.PATH_AOO_REGISTER,
     component: AooRegisterPageComponent,

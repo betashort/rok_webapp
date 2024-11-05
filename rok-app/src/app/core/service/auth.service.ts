@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
-//const AUTH_API = 'http://localhost:8000/api/auth/';
-const AUTH_API = 'https://rok-api.betashort-lab.com/api/auth/';
+const AUTH_API = 'http://localhost:8000/api/auth/';
+//const AUTH_API = 'https://rok-api.betashort-lab.com/api/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

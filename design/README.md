@@ -154,6 +154,7 @@ sequenceDiagram
 </table>
 
 ##### ユーザがAOO登録画面で参加登録する
+
 ```mermaid
 
 sequenceDiagram
@@ -238,4 +239,7 @@ sequenceDiagram
 </table>
 
 ## データベース設計書
+
+
 ### ER図
+

@@ -3,7 +3,7 @@ from rest_framework.status import *
 from rest_framework.views import APIView
 
 from .models import Account
-from .serializers import LoginSerializer, RegisterSerializer
+from .serializers import LoginSerializer, RegisterSerializer, UpdateSerializer
 
 class ResigterView(APIView):
     
@@ -45,3 +45,19 @@ class LoginView(APIView):
                 return Response({"error": "ログイン失敗"}, status=HTTP_400_BAD_REQUEST)
         except:
             return Response({"error": "ログイン失敗"}, status=HTTP_400_BAD_REQUEST)
+        
+class UpdateView(APIView):
+    
+    def patch(self, request, *args, **kwargs):
+        user_id = request.data['userId']
+        user_name = request.data['userName']
+        password = request.data['password']
+        
+        exit_user = Account.object.filter(user_id = user_id)
+        serializer = UpdateSerializer(instance)
+        serializer.is_valid(raise_exception=True)
+        
+        serializer.save()
+        
+        return Response({'a': 'A'})
+        

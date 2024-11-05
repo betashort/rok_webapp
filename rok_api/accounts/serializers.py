@@ -33,4 +33,8 @@ class LoginSerializer(serializers.ModelSerializer):
     #     user_id = data.get('user_id')
     #     user_name = data.get('user_name')
     #     password = data.get('password')
-        
+
+class UpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ["user_id", "user_name", "password", "role"]        

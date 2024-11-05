@@ -4,6 +4,7 @@ export class Urls {
     static readonly SLASH = '/';
     static readonly PATH_LOGIN = 'login';
     static readonly PATH_SIGN_UP = 'sign-up';
+    static readonly PATH_MYPAGE = 'mypapge'
     static readonly PATH_RESULT_REGISTER_FORM = 'result-register-form';
     static readonly PATH_DASHBOARD = 'dashboard-page';
     static readonly PATH_RESOURCE_CALCULATOR = 'resource-calculator';
@@ -21,10 +22,11 @@ export interface IPageUrlPair {
 }
 
 export const PAGEURLS: IPageUrlPair[] = [
-    {page: 'ログイン', url:"login", role:""},
-    {page: 'ダッシュボード', url:"dashboard-page", role:""},
-    {page: 'オシリス登録', url: 'aoo-register', role: ""},
-    {page: 'オシリスチームボード', url: 'aoo-teamboard', role:"admin"},
-    {page: '管理者ページ', url: 'admin-page', role:"admin"},
-    {page: 'KVK戦力登録ページ', url: 'kvk-register', role:""}
+    {page: 'ログイン', url:Urls.PATH_LOGIN, role:""},
+    {page: 'ダッシュボード', url:Urls.PATH_DASHBOARD, role:""},
+    {page: 'マイページ', url:Urls.PATH_MYPAGE, role:"user"},
+    {page: 'オシリス登録', url:Urls.PATH_AOO_REGISTER, role: ""},
+    {page: 'オシリスチームボード', url: Urls.PATH_AOO_TEAMBOARD, role:"admin"},
+    {page: '管理者ページ', url:Urls.PATH_ADMIN, role:"admin"},
+    {page: 'KVK戦力登録ページ', url:Urls.PATH_KVK_REGISTER, role:""}
 ]
