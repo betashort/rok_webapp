@@ -1,19 +1,23 @@
 # 設計書
 1. [システム設計 - ソフトウェア構成 -](#システム設計---ソフトウェア構成--)
 2. [ソフトウェア設計 - 機能 -](#ソフトウェア設計---機能--)
-   1. [ログインについて](#ログインについて)
-      1. [ユーザ登録](#ユーザ登録)
-      2. [ログイン](#ログイン)
-      3. [ログアウト](#ログアウト)
-      4. [ユーザ情報の更新](#ユーザ情報の更新)
-   2. [KVK戦績登録について](#kvk戦績登録について)
-   3. [AOO参加登録について](#aoo参加登録について)
-      1. [AOO管理画面](#aoo管理画面)
+   1. [ログインページ](#ログインページ)
+      1. [機能一覧](#機能一覧)
+      2. [ユーザ登録](#ユーザ登録)
+      3. [ログイン](#ログイン)
+      4. [ログアウト](#ログアウト)
+      5. [ユーザ情報の更新](#ユーザ情報の更新)
+   2. [KVK戦績登録ページ](#kvk戦績登録ページ)
+   3. [AOO参加登録ページ](#aoo参加登録ページ)
+      1. [機能一覧](#機能一覧-1)
          1. [シーケンス図](#シーケンス図)
-      2. [AOO参加登録画面](#aoo参加登録画面)
-         1. [ユーザがAOO登録画面で参加登録する](#ユーザがaoo登録画面で参加登録する)
-      3. [AOOチーム管理画面](#aooチーム管理画面)
+      2. [入力フォーム](#入力フォーム)
+      3. [シーケンス図](#シーケンス図-1)
+   4. [AOO参加登録画面](#aoo参加登録画面)
+      1. [AOOチームボードページ](#aooチームボードページ)
          1. [管理者が参加登録メンバーのチーム編成を作る](#管理者が参加登録メンバーのチーム編成を作る)
+   5. [管理者ページ](#管理者ページ)
+      1. [機能一覧](#機能一覧-2)
 3. [API定義書](#api定義書)
 4. [データベース設計書](#データベース設計書)
    1. [ER図](#er図)
@@ -22,7 +26,19 @@
 ![システム](./img/ROKアプリケーション.jpg)
 ## ソフトウェア設計 - 機能 -
 
-### ログインについて
+### ログインページ
+
+#### 機能一覧
+<table>
+<tr>
+<th></th>
+<th></th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</table>
 
 #### ユーザ登録
 
@@ -34,7 +50,7 @@ sequenceDiagram
     participant server as APIサーバ
     
     user ->> front: ユーザ登録する 
-    front ->> server: [POST] api/auth/signup/ <br> {"userId": , "userName": "", "password": "", "confirmPassword": ""}
+    front ->> server: [POST] api/auth/signup <br> {"userId": , "userName": "", "password": "", "confirmPassword": ""}
     server ->> front: {"status": ""}
     front ->> user: ユーザ登録成功/失敗
     
@@ -49,7 +65,7 @@ sequenceDiagram
     participant server as APIサーバ
 
     user ->> front: ログインする
-    front ->> server: [POST] api/auth/login/ <br> {"userId": "", "password": ""}
+    front ->> server: [POST] api/auth/login <br> {"userId": "", "password": ""}
     server ->> front: {"userId": "", "userName": "", "role":""}
     front ->> front: sessionStrage <br>{"userId": "", "userName": "", "role":""}
     front ->> user: ダッシュボードページを表示する
@@ -84,13 +100,10 @@ sequenceDiagram
     
 ```
 
-### KVK戦績登録について
+### KVK戦績登録ページ
 
-### AOO参加登録について
-
-
-#### AOO管理画面
-
+### AOO参加登録ページ
+#### 機能一覧
 <table>
   <tr>
     <th>機能</th>
@@ -134,9 +147,13 @@ sequenceDiagram
     admin ->> user: AOOタイトルの削除完了を通知し、タイトル一覧を更新する
     
 ```
+#### 入力フォーム
+
+#### シーケンス図
+
 
 ---
-#### AOO参加登録画面
+### AOO参加登録画面
 
 <table>
   <tr>
@@ -153,27 +170,7 @@ sequenceDiagram
   </tr>
 </table>
 
-##### ユーザがAOO登録画面で参加登録する
-
-```mermaid
-
-sequenceDiagram
-    actor user
-    participant aoo_register as AOO登録画面
-    participant server as APIサーバ
-
-    user ->> aoo_register: 表示する
-    aoo_register ->> server: [GET] api/aoo
-    server ->> aoo_register: {"id": "", "title": ""}
-    aoo_register ->> user: AOOタイトルの一覧を表示する
-    
-    user ->> aoo_register: 参加登録する
-    aoo_register ->> server: [POST] api/aoo/register
-    server ->> aoo_register: {"id": "", "title": ""}
-    aoo_register ->> user: 登録完了を通知する
-```
----
-#### AOOチーム管理画面
+#### AOOチームボードページ
 
 <table>
   <tr>
@@ -219,22 +216,124 @@ sequenceDiagram
     
 ```
 
+### 管理者ページ
+
+#### 機能一覧
+
+<table>
+  <tr>
+    <th>機能</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>ユーザ情報を管理する</td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>AOO開催日を登録し、登録ページを公開する</td>
+    <td></td>
+  </tr>
+  </tr>
+    <tr>
+    <td>KVKの登録ページを公開する</td>
+    <td></td>
+  </tr>
+</table>
+
+
 ## API定義書
 
 <table>
   <tr>
+    <th>目的</th>
     <th>エンドポイント</th>
     <th>メソッド</th>
-    <th>機能</th>
-    <th>input</th>
+    <th>パラメータ</th>
     <th>response</th>
   </tr>
   <tr>
+    <td>ユーザ登録する</td>
+    <td>https://rok-api.betashort.com/api/auth/signup</td>
+    <td>POST</td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role", "password":"password"}</td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role"}</td>
+  </tr>
+  <tr>
+    <td>ユーザ更新する</td>
+    <td>https://rok-api.betashort.com/api/auth/signup:id</td>
+    <td>PUT</td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role", "password":"password"}</td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role"}</td>
+  </tr>
+  <tr>
+    <td>ユーザ一覧を取得する</td>
+    <td>https://rok-api.betashort.com/api/auth/users</td>
+    <td>GET</td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role"}</td>
+  </tr>
+  <tr>
+    <td>ログインする</td>
+    <td>https://rok-api.betashort.com/api/auth/signin</td>
+    <td>POST</td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role", "password":"password"}</td>
+    <td>{"userId":"userId", "userName":"userName", "role":"role"}</td>
+  </tr>
+  <tr>
+    <td>KVKの戦績を登録する</td>
+    <td>https://rok-api.betashort.com/api/kvk/user-result-register</td>
+    <td>POST</td>
+    <td>{}</td>
+    <td>{"status":}</td>
+  </tr>
+  <tr>
+    <td>KVKの戦績を更新する</td>
+    <td>https://rok-api.betashort.com/kvk/user-result-update</td>
+    <td>PATCH</td>
+    <td>{}</td>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <td>ユーザのKVKの戦績を取得する</td>
+    <td>https://rok-api.betashort.com/api/kvk/user-result:id</td>
+    <td>GET</td>
+    <td>{}</td>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <td>全ユーザのKVKの戦績を取得する</td>
+    <td>https://rok-api.betashort.com/api/kvk/users-result</td>
+    <td>GET</td>
+    <td>{}</td>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <td>全ユーザのKVKの戦績を更新する</td>
+    <td>https://rok-api.betashort.com/api/kvk/users-result</td>
+    <td>PATCH</td>
+    <td>{}</td>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <td>AOOの参加登録をする</td>
+    <td>https://rok-api.betashort.com/api/aoo/user-participant</td>
+    <td>PUT</td>
+    <td>{}</td>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <td>AOOの開催日指定で参加メンバーを取得する</td>
+    <td>https://rok-api.betashort.com/api/aoo/users-participant:holdId</td>
+    <td>GET</td>
+    <td>{}</td>
+    <td>{}</td>
+  </tr>
+  <tr>
+    <td>AOOの開催日指定で参加メンバー情報を更新する</td>
+    <td>https://rok-api.betashort.com/api/aoo/users-participant:holdId</td>
+    <td>PATCH</td>
+    <td>{}</td>
+    <td>{}</td>
   </tr>
 </table>
 
